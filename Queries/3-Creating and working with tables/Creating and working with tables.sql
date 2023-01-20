@@ -1,5 +1,6 @@
 DROP TABLE IF EXISTS tblPerson;
 DROP TABLE IF EXISTS tblGender;
+GO
 DROP DATABASE IF EXISTS Sample;
 Go
 
@@ -27,7 +28,6 @@ Name NVARCHAR(30),
 Email NVARCHAR(30),
 GenderId INT 
 CONSTRAINT PK_Person PRIMARY KEY (ID),
-CONSTRAINT FK_Gender_Person FOREIGN KEY (GenderId) REFERENCES tblGender(ID)
 );
 GO
 
@@ -39,3 +39,9 @@ VALUES
 ('Alex','Alex@test.com',1),
 ('Monica','Monica@test.com',2)
 
+Go 
+
+ALTER TABLE tblPerson 
+ADD CONSTRAINT FK_tblPerson_GenderId
+FOREIGN KEY (GenderId) REFERENCES tblGender(id);
+GO
